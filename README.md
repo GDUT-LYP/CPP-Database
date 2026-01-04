@@ -43,7 +43,7 @@ EDGE_WEIGHT_TYPE: EUC_2D    # Distance metric (2D Euclidean)
 * **`GTSP_SET_SECTION`**: Defines the clusters. In the context of PCGTSP, each cluster corresponds to a single contour (either an outer outline or an inner hole) of a part.
   * Format: `<ClusterID> <NodeID_1> <NodeID_2> ... -1`
 * **`GTSP_SET_ORDERING`**: Defines the precedence constraints between clusters. It specifies the topological order in which the clusters (contours) must be visited (e.g., inner contours must be cut before outer contours).
-  * Format: `<Predecessor_ClusterID> <Successor_ClusterID>`
+  * Format: `<Predecessor_ClusterID> <Successor_ClusterID> ... -1`
 
 ### Example Snippet
 
@@ -57,7 +57,7 @@ GTSP_SET_SECTION
 2 6 7 8 9 -1
 ...
 GTSP_SET_ORDERING
-1 2        # Cluster 1 must be visited before Cluster 2
-3 4        # Cluster 3 must be visited before Cluster 4
+1 2 -1        # Cluster 1 must be visited before Cluster 2
+3 4 -1        # Cluster 3 must be visited before Cluster 4
 ...
 EOF
